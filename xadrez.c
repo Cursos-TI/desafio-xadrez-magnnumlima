@@ -1,57 +1,75 @@
 #include <stdio.h>
+ // JOGO XADREZ NIVEL MESTRE
 
-int main() {
-
-
-    //  Movimento da Torre cinco casas para a direita
-
+ // MOVIMENTO TORRE (5 casas direita)
+ 
+void moverTorre(int casas)
+{
     
-    for (int t = 0; t < 5; t++)
-    {
-        printf("Torre moveu para DIREITA\n");
+    if (casas > 0) {
+    printf("Torre moveu para Direita\n");
+    moverTorre(casas - 1);
+    
     }
 
     
-
-    // Movimento Bispo cinco casas diagonal
-
-
-    int b = 0;
-
-    do
-    {
-        printf("Bispo moveu para CIMA/DIREITA\n");
-        b++;
-    } while (b < 5);
-
-    printf("\n");
-
-    
-    // Movimento da Rainha
-
-
-    int r = 0;
-
-    while (r < 8)
-    {
-        printf("Rainha moveu para ESQUERDA\n");
-        r++;
-    }
-    printf("\n");
-
-    // Movimento do cavalo
-
-    int movimentoLcavalo = 1;
-
-    while (movimentoLcavalo--){
-        for (int i = 0; i < 2; i++){
-        printf("Cavalo moveu para BAIXO\n");
-        }
-        printf("Cavalo moveu para DIREITA\n");
-        
-    }
-
-    return 0;
-
 }
 
+
+ // MOVIMENTO BISPO (5 casas diagonal, com recursividade)
+
+
+void moverBispo(int casas){
+    if (casas > 0) {
+    for (int i = 0; i < 1; i++)
+    {
+       printf("Bispo moveu para Cima\n");
+       for (int j = 0; j < 1; j++)
+       {
+        printf("Bispo moveu para Direita\n");
+       }
+       moverBispo(casas -1);
+    }
+    
+    
+}
+}
+
+// MOVIMENTO CAVALO
+
+void moverCavalo(int casas){
+for (int i = 0; i < 2; i++)
+{
+    printf("Cavalo moveu para Cima\n");
+}for (int j = 0; j < 1; j++)
+{
+    printf("Cavalo moveu para Direita\n");
+}
+}
+
+
+ // MOVIMENTO RAINHA (8 casas esquerda)
+
+void moverRainha(int casas){
+    if (casas > 0) {
+    printf("Rainha moveu para Esquerda\n");
+    moverRainha(casas - 1);
+}
+}
+
+
+int main(){
+
+    printf("\n**** MOVIMENTO TORRE****\n\n");
+    moverTorre(5);
+    printf("\n****** TORRE PAROU ******\n");
+    printf("\n**** MOVIMENTO BISPO****\n\n");
+    moverBispo(5);
+    printf("\n****** BISPO PAROU ******\n");
+    printf("\n**** MOVIMENTO RAINHA****\n\n");
+    moverRainha(8);
+    printf("\n******RAINHA PAROU ******\n\n");
+    printf("****** MOVIMENTO CAVALO ******\n");
+    moverCavalo(1);
+    printf("\n****** CAVALO PAROU ******\n\n");
+}
